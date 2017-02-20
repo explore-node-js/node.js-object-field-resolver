@@ -1,8 +1,23 @@
 # node.js-object-field-resolver
-allows overwrite object fields with value
+allows overwrite object field value using abstract path
 
+## software requirements
+ * node.js 6.9+ [with v8 enabled]
+ * npm 3+
 
-how to use:
+## used technologies
+ * jest
+ 
+## how to execute tests
+```
+npm test
+```
+to execute tests with coverage
+```
+npm test -- --coverage
+```
+
+## how to use
 
 ```
 import overwriteObjectField from "node-object-field-resolver"

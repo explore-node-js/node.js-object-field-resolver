@@ -15,6 +15,12 @@ describe(`resolver: object field`, () => {
             expected: { node1: {} }
         },
         {
+            absolutePath: 'node1.node2',
+            value: 'string',
+            object: { node1: 'value' },
+            expected: { node1: { node2: 'string' } }
+        },
+        {
             absolutePath: 'node1',
             value: {},
             object: { node2: ['test'] },
