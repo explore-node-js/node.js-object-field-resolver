@@ -21,6 +21,8 @@ npm test -- --coverage
 
 ```
 import overwriteObjectField from "node-object-field-resolver"
+# or, if you use pure node.js:
+const overwriteObjectField = require("node-object-field-resolver");
 
 ...
 let object = {xxx: 'value'} -- given object
