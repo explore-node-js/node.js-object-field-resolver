@@ -1,4 +1,4 @@
-const overwriteObjectFieldValue = require("../src/object_field_resolver");
+const overwriteObjectFieldValue = require("../src/overwrite_object_field_value");
 
 describe(`resolver: object field`, () => {
     const dataProvider = [
@@ -13,6 +13,12 @@ describe(`resolver: object field`, () => {
             value: {},
             object: { node1: ['test'] },
             expected: { node1: {} }
+        },
+        {
+            absolutePath: 'node1.node2',
+            value: 'string',
+            object: { node1: 'value' },
+            expected: { node1: { node2: 'string' } }
         },
         {
             absolutePath: 'node1',
