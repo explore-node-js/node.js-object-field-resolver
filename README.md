@@ -25,11 +25,9 @@ import overwriteObjectField from "node-object-field-resolver"
 const overwriteObjectField = require("node-object-field-resolver");
 
 ...
-let object = {xxx: 'value'} -- given object
+let object = {xxx: 'value'} # given object
 
-object = overwriteObjectField('xxx.yyy', object, 'new value', '.');
-
-object -- {xxx: { yyy: 'new value'} }
+object = overwriteObjectField('xxx.yyy', object, 'new value', '.'); # result: object ~ {xxx: { yyy: 'new value'} }
 
 can be used as well as:
 overwriteObjectField('xxx.yyy', object, 'new value') # as objects are passed as via reference and get modified in proccess
