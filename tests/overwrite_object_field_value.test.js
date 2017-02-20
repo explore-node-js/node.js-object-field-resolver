@@ -1,4 +1,4 @@
-const overwriteObjectFieldValue = require("./object_field_resolver");
+const overwriteObjectFieldValue = require("../src/object_field_resolver");
 
 describe(`resolver: object field`, () => {
     const dataProvider = [
