@@ -5,9 +5,9 @@ module.exports = function overwriteObjectFieldValue(abstractPath, value, object,
 
     const indexes = abstractPath.split(delimiter);
     const lastPathIndex = indexes.length - 1;
-    let obj = object;
+    var obj = object;
 
-    for (let i = 0; i <= lastPathIndex; i++) {
+    for (var i = 0; i <= lastPathIndex; i++) {
         const index = indexes[i];
 
         if (undefined === obj[index] || !(obj[index] instanceof Object)) {
