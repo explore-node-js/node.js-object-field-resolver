@@ -1,7 +1,2 @@
-# Dependency directories
-node_modules
-jspm_packages
-
-.npm
-
-coverage
+coverage/
+node_modules/
