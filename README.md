@@ -25,7 +25,8 @@ allows overwrite object field value using abstract path
  `npm test` or, to execute tests with coverage `npm test -- --coverage`
 
 ## how to use
-`import resolve from "node-object-field-resolver";` or `const resolve = require("node-object-field-resolver");`
+`import resolve from "node-object-field-resolver";`
+or `const resolve = require("node-object-field-resolver");`
 
 ```
 let object = {xxx: 'value'} # given object
