@@ -33,5 +33,6 @@ let object = {xxx: 'value'} # given object
 object = resolve('xxx.yyy', object, 'new value', '.'); -> result: object ~ {xxx: { yyy: 'new value'} }
 
 can be used as well as:
-         resolve('xxx.yyy', object, 'new value') -> as objects are passed as reference and get modified in proccess
+         resolve('xxx.yyy', object, 'new value') -> as objects are passed as references
+                                                 -> result: object ~ {xxx: { yyy: 'new value'} }
 ```
