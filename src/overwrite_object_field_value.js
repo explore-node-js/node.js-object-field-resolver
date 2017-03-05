@@ -1,5 +1,3 @@
-"use strict";
-
 module.exports = function overwriteObjectFieldValue(abstractPath, value, object, delimiter) {
     delimiter = undefined !== delimiter ? delimiter : '.';
 
