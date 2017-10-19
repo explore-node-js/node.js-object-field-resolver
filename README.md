@@ -15,7 +15,7 @@
 allows overwrite object field value using abstract path
 
 ## how to install
-`$ npm install node-object-field-resolver`
+`$ npm install node-object-field-resolver` or `$ yarn add node-object-field-resolver`
 
 ## software requirements
  * node.js v6.9+ [with v8 enabled]
