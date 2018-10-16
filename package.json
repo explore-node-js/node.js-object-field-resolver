@@ -1,6 +1,6 @@
 {
     "name": "node-object-field-resolver",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "allows overwrite object fields with value",
     "main": "./src/overwrite_object_field_value.js",
     "repository": {

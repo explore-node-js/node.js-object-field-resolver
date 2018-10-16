@@ -34,9 +34,12 @@ or `const resolve = require("node-object-field-resolver");`
 ```
 let object = {xxx: 'value'} # given object
 
-object = resolve('xxx.yyy', object, 'new value', '.'); -> result: object ~ {xxx: { yyy: 'new value'} }
-
+obj = resolve('xxx.yyy' /** absolute path */, object /** object */, 'new value' /** value */, '.' /** delimeter for path [param 0] */);
+   -> result: obj ~ {xxx: { yyy: 'new value'} }
+```
 can be used as well as:
-         resolve('xxx.yyy', object, 'new value') -> as objects are passed as references
-                                                 -> result: object ~ {xxx: { yyy: 'new value'} }
+```
+resolve('xxx.yyy', object, 'new value')
+   -> as objects are passed as references
+   -> result: object ~ {xxx: { yyy: 'new value'} }
 ```

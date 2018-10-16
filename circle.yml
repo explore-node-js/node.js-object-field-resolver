@@ -1,14 +1,34 @@
-machine:
-    node:
-        version: 6.9
-
-dependencies:
-    cache_directories:
-        - ~/.npm/
-
-test:
-    pre:
-        - npm install -g codecov
-    override:
-        - npm test -- --coverage
-        - codecov
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/node:10.4.0
+    steps:
+      - checkout
+      - run: npm i --verbose
+      - run: sudo npm i -g codecov
+      - run: npm test -- --coverage
+      - run: codecov
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+  deploy:
+    docker:
+      - image: circleci/node:10.4.0
+    steps:
+      - checkout
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: |
+          if [ "${CIRCLE_BRANCH}" == "master" ]; then
+             npm publish
+          fi  
+workflows:
+  version: 2
+  test-and-deploy:
+    jobs:
+      - test
+      - deploy
+#           requires:
+#             - test
+#           branches:
+#             only: /master/
