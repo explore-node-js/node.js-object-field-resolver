@@ -5,7 +5,7 @@
 [npm.package-badge]: https://badge.fury.io/js/node-object-field-resolver.svg
 [npm.package]: https://www.npmjs.com/package/node-object-field-resolver
 
-# node.js parameter handler
+# node.js-object-field-resolver
 
 allows overwrite object field value using abstract path, works like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or [object spread into object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), but with more complex logic, when the 'path' can be more than one level deep, it do not overwrite NON 
 
