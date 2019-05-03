@@ -1,4 +1,4 @@
-const overwriteObjectFieldValue = require("./overwrite_object_field_value");
+const overwriteObjectFieldValue = require("../src/overwrite_object_field_value");
 
 describe(`::overwriteObjectFieldValue`, () => {
     const dataProvider = [
