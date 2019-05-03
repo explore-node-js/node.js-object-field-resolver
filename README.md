@@ -47,15 +47,15 @@ const obj = resolve(
    'x.y' /** absolute path */,
    {} /** object */,
    1 /** value */,
-   '.' /** delimeter for path */
+   '.' /** delimeter for path [.] is default */
 );
-/** result: obj ~ {x: { y: 1} } */
+/** result: obj ~ {x: { y: 1 } } */
 
 const obj = resolve(
    'x.y' /** absolute path */,
    { x: { z: 2 } } /** object */,
    1 /** value */,
-   '.' /** delimeter for path */
+   '.' /** delimeter for path [.] is default */
    );
 /** result: obj ~ {x: { y: 1, z: 2 } } */
 
