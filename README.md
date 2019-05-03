@@ -7,7 +7,7 @@
 
 # node.js-object-field-resolver
 
-allows overwrite object field value using abstract path, works like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or [object spread into object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), but with more complex logic, when the 'path' can be more than one level deep, it do not overwrite NON 
+allows overwrite object field value using abstract path, works like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or [object spread into object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), but with more complex logic, when the 'path' can be more than one level deep, **it do not overwrite arrays in path**, it will overwrite primitives and extend objects
 
 [![build][ci.tests-master-badge]][ci.tests-master]
 [![coverage][ci.coverage-master-badge]][ci.coverage-master]
@@ -43,17 +43,27 @@ allows overwrite object field value using abstract path, works like [Object.assi
 or `const resolve = require("node-object-field-resolver");`
 
 ```
-const obj = resolve('x.y' /** absolute path */, {} /** object */, 1 /** value */, '.' /** delimeter for path */);
-   -> result: obj ~ {x: { y: 1} }
+const obj = resolve(
+   'x.y' /** absolute path */,
+   {} /** object */,
+   1 /** value */,
+   '.' /** delimeter for path */
+);
+/** result: obj ~ {x: { y: 1} } */
 
-const obj = resolve('x.y' /** absolute path */, {x: {z: 2}} /** object */, 1 /** value */, '.' /** delimeter for path */);
-   -> result: obj ~ {x: { y: 1, z: 2 } }
+const obj = resolve(
+   'x.y' /** absolute path */,
+   { x: { z: 2 } } /** object */,
+   1 /** value */,
+   '.' /** delimeter for path */
+   );
+/** result: obj ~ {x: { y: 1, z: 2 } } */
 
 
 ```
 can be used as well as:
 ```
-const obj { x: { z: 2 } }
+const obj = { x: { z: 2 } }
 resolve('x.y', obj, 1)
    -> as objects are passed as references
    -> result: 'obj' will look like {z: { y: 1, z: 2 } }
