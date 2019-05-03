@@ -92,6 +92,13 @@ describe(`::overwriteObjectFieldValue`, () => {
             obj: { f0: { f1: { f2: {} } } },
             expected: { f0: { f1: { f2: {}, f20: 1 } } },
         },
+        /** should be not overwritten */
+        {
+            path: 'f0.f1.f2',
+            v: 1,
+            obj: { f0: [] },
+            expected: { f0: [] },
+        },
     ];
 
     const execute = ({ path, v, obj, delimiter, expected }) => {
