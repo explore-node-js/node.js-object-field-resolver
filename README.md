@@ -7,7 +7,7 @@
 
 # node.js parameter handler
 
-allows overwrite object field value using abstract path, works like Object.assign, but with more complex logic, when the 'path' can be more than one level deep.
+allows overwrite object field value using abstract path, works like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or [object spread into object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), but with more complex logic, when the 'path' can be more than one level deep.
 
 [![build][ci.tests-master-badge]][ci.tests-master]
 [![coverage][ci.coverage-master-badge]][ci.coverage-master]
