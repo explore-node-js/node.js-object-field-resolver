@@ -1,45 +1,73 @@
-[circle.ci-master-badge]: https://circleci.com/gh/explore-node-js/node.js-object-field-resolver/tree/master.svg?style=svg
-[circle.ci-master-link]: https://circleci.com/gh/explore-node-js/node.js-object-field-resolver/tree/master
-[codecov.io-master-badge]: https://codecov.io/gh/explore-node-js/node.js-object-field-resolver/branch/master/graph/badge.svg
-[codecov.io-master-link]: https://codecov.io/gh/explore-node-js/node.js-object-field-resolver
-
-|                  | master
-|---               |---
-| __tests__        |
-| _< Circle CI >_  | [![build][circle.ci-master-badge]][circle.ci-master-link]
-| __coverage__     |
-| _< codecov.io >_ | [![coverage][codecov.io-master-badge]][codecov.io-master-link]
-
+[ci.tests-master-badge]: https://circleci.com/gh/explore-node-js/node.js-object-field-resolver/tree/master.svg?style=svg
+[ci.tests-master]: https://circleci.com/gh/explore-node-js/node.js-object-field-resolver/tree/master
+[ci.coverage-master-badge]: https://codecov.io/gh/explore-node-js/node.js-object-field-resolver/branch/master/graph/badge.svg
+[ci.coverage-master]: https://codecov.io/gh/explore-node-js/node.js-object-field-resolver/branch/master
+[npm.package-badge]: https://badge.fury.io/js/node-object-field-resolver.svg
+[npm.package]: https://www.npmjs.com/package/node-object-field-resolver
 
 # node.js-object-field-resolver
-allows overwrite object field value using abstract path
 
-## how to install
-`$ npm install node-object-field-resolver` or `$ yarn add node-object-field-resolver`
+allows overwrite object field value using abstract path, works like [Object.assign](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) or [object spread into object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax), but with more complex logic, when the 'path' can be more than one level deep, **it do not overwrite arrays in path**, it will overwrite primitives and extend objects
 
-## software requirements
- * node.js v6.9+ [with v8 enabled]
- * npm v3+
+[![build][ci.tests-master-badge]][ci.tests-master]
+[![coverage][ci.coverage-master-badge]][ci.coverage-master]
+[![coverage][npm.package-badge]][npm.package]
 
-## used technologies
- * jest _[for tests only]_
- 
-## how to execute tests
- `npm test` or, to execute tests with coverage `npm test -- --coverage`
+### how to install
 
-## how to use
-`import resolve from "node-object-field-resolver";`
-or `const resolve = require("node-object-field-resolver");`
+`$ npm i node-object-field-resolver` or `$ yarn add node-object-field-resolver`
 
-```
-let object = {xxx: 'value'} # given object
+### software requirements
 
-obj = resolve('xxx.yyy' /** absolute path */, object /** object */, 'new value' /** value */, '.' /** delimeter for path [param 0] */);
-   -> result: obj ~ {xxx: { yyy: 'new value'} }
+* [node.js](https://nodejs.org/)
+* [npm](https://www.npmjs.com/)+ or [yarn](https://yarnpkg.com/)
+
+### used technologies
+
+* [jest](https://facebook.github.io/jest/) - only for tests
+
+### used services
+
+* [circle ci](https://circleci.com/dashboard)
+* [codecov](https://codecov.io/)
+* [code climate](https://codeclimate.com/)
+* [snyk](https://snyk.io/)
+
+### how to execute tests
+
+* `$ npm test`
+* to execute tests with coverage `npm test -- --coverage`
+
+### how to use
+
+```javascript
+/** ES6 */
+import resolve from "node-object-field-resolver";
+/** commmonjs */
+const resolve = require("node-object-field-resolver");
+
+const obj = resolve(
+   'x.y' /** absolute path */,
+   {} /** object */,
+   1 /** value */,
+   '.' /** delimeter for path [.] is default */
+);
+/** result: obj ~ {x: { y: 1 } } */
+
+const obj = resolve(
+   'x.y' /** absolute path */,
+   { x: { z: 2 } } /** object */,
+   1 /** value */,
+   '.' /** delimeter for path [.] is default */
+   );
+/** result: obj ~ {x: { y: 1, z: 2 } } */
+
+
 ```
 can be used as well as:
 ```
-resolve('xxx.yyy', object, 'new value')
+const obj = { x: { z: 2 } }
+resolve('x.y', obj, 1)
    -> as objects are passed as references
-   -> result: object ~ {xxx: { yyy: 'new value'} }
+   -> result: 'obj' will look like { z: { y: 1, z: 2 } }
 ```
