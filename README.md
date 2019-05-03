@@ -39,10 +39,13 @@ allows overwrite object field value using abstract path, works like [Object.assi
 * to execute tests with coverage `npm test -- --coverage`
 
 ### how to use
-`import resolve from "node-object-field-resolver";`
-or `const resolve = require("node-object-field-resolver");`
 
-```
+```javascript
+/** ES6 */
+import resolve from "node-object-field-resolver";
+/** commmonjs */
+const resolve = require("node-object-field-resolver");
+
 const obj = resolve(
    'x.y' /** absolute path */,
    {} /** object */,
@@ -66,6 +69,5 @@ can be used as well as:
 const obj = { x: { z: 2 } }
 resolve('x.y', obj, 1)
    -> as objects are passed as references
-   -> result: 'obj' will look like {z: { y: 1, z: 2 } }
+   -> result: 'obj' will look like { z: { y: 1, z: 2 } }
 ```
-
